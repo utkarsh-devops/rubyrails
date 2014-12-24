@@ -1,0 +1,10 @@
+<%= form_tag('/admin/events/search_results', method: "get", class: "form-search searchForm") do %>
+<select class="span2" name="searchFor">
+  <option value="event">Event</option>
+  <option value="patient">Patient</option>
+</select>
+<div class="input-append">
+  <input type="text" class="span2" placeholder="Search" id="q" name="q">
+  <button type="submit" class="btn"><i class="icon-search"></i></button>
+</div>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="contentWrapper">
+  <div class="releaseLeftSection">
+    <div class="imageWrapper">
+      <%= cl_image_tag @profile_image, :class => "releaseImage" %>
+    </div>
+    <div class="patientDetails">
+      <br>Name: <%= @patient_form.patient.display_name %>
+      <br>Email: <%= @patient_form.patient.email %>
+      <br>Date of Birth: <%= @patient_form.patient.birth_date.strftime("%B %d, %Y") %><br><br>
+    </div>
+    <div class="cls"></div>
+  </div>
+  <div class="releaseRightSection">
+    <div class="eventDetails">
+      <b><%= @patient_form.event.name %> Event</b><br>
+      <%= @patient_form.event.is_permanent_event ? 'Permanent Event' : @patient_form.event.event_date.strftime("%B %d, %Y") %><br>
+      Release Expiry: <%= @patient_form.expiry_date.present? ? @patient_form.expiry_date.strftime("%B %d, %Y") : 'Never' %><br>
+      Signed by: <%= @patient_form.patient.birth_date < (Date.today - 18.years) ? @patient_form.patient.display_name : @patient_form.display_guardian_name %><br>
+      Phone: <%= @patient_form.patient.phone_no.present? ? @patient_form.patient.phone_no : '-' %><br>
+      Follow Up: <%= @patient_form.follow_up_requested ? 'Requested' : 'Not Requested' %><br>
+      Notes: <%= @patient_form.notes.present? ? @patient_form.notes : '-' %><br>
+    </div>
+    <div class="usesSection">
+      <b> Approved Uses </b><br>
+      <% @uses.each do |u| %>
+          <%= u %><br />
+      <% end %>
+    </div>
+    <div class="cls"></div>
+  </div>
+  <div class="formSection">
+    <%= @patient_form.release.english_desc.html_safe %>
+  </div>
+  <div class="signatureImage">
+    <span>Signature</span>
+    <div class="imageWrapper">
+    <%= cl_image_tag @sign_image, :class => "releaseImage" %>
+    </div>
+  </div>
+</div>

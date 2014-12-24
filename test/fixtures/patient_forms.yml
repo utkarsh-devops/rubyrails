@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  notes: MyText
+  follow_up_requested: false
+  profile_image: MyString
+  other_purpose: MyString
+  expiry_date: 2013-09-05
+  sign_image: MyString
+  guardian_first_name: MyString
+  guardian_last_name: MyString
+
+two:
+  notes: MyText
+  follow_up_requested: false
+  profile_image: MyString
+  other_purpose: MyString
+  expiry_date: 2013-09-05
+  sign_image: MyString
+  guardian_first_name: MyString
+  guardian_last_name: MyString

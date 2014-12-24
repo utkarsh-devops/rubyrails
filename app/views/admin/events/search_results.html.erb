@@ -1,0 +1,43 @@
+<div class="contentWrapper">
+  <div class="releaseUpperLinks">
+    <div class="topBreadcrumb">
+      <span>Search results : <%= @query %></span>
+    </div>
+  </div>
+  <div>
+    <% if @search_for == 'patient' && @results.count > 0 %>
+      <%# Kaminari.paginate_array(@results.relation).page(params[:page]).per(20) %>
+      <table class="table table-striped">
+        <tr>
+        <td><b>Patient</b></td>
+        <td><b>Email Address</b></td>
+        <td><b>Action</b></td>
+        </tr>
+        <% @results.each do |r| %>
+        <tr>
+        <td><%= r.first_name + " " + r.last_name %></td>
+        <td><%= r.email %></td>
+        <td><%= link_to "View", patient_events_admin_events_path(:patient_id => r.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+    <% elsif @search_for == 'event' && @results.count > 0 %>
+        <table class="table table-striped">
+          <tr>
+            <td><b>Event Name</b></td>
+            <td><b>Releases</b></td>
+            <td><b>Date</b></td>
+          </tr>
+          <% @results.each do |r| %>
+              <tr>
+                <td><%= r.name %></td>
+                <td><%= r.patient_forms.count > 0 ? (link_to r.patient_forms.count, admin_event_path(r)) : r.patient_forms.count %></td>
+                <td><%= r.is_permanent_event ? 'Permanent' : r.event_date.present? ? r.event_date.strftime("%B %d, %Y") : '' %></td>
+              </tr>
+          <% end %>
+        </table>
+    <% else %>
+      <div><b> No search results found for "<%= @query %>".</b></div>
+    <% end %>
+  </div>
+</div>

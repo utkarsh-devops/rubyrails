@@ -1,0 +1,33 @@
+<div class="contentWrapper">
+  <div class="releaseUpperLinks">
+    <div class="topBreadcrumb">
+      <a href="#">Search results</a> / <span>Releases By events</span>
+    </div>
+  </div>
+  <div class="releaseLeftSection">
+    <%= @patient.display_name %><br>
+    <%= @patient.email %><br>
+    Date of Birth: <%= @patient.birth_date.strftime("%B %d, %Y") %><br><br>
+    <div class="imageWrapper">
+      <%= image_tag @patient_forms.last.profile_image, :class => "releaseImage" %>
+    </div>
+  </div>
+  <div class="releaseRightSection">
+    <table class="table table-striped">
+      <tr>
+        <td><b>Releases By event</b></td>
+        <td><b>Release Date</b></td>
+        <td><b>Expiry Date</b></td>
+        <td><b>Action</b></td>
+      </tr>
+      <% @patient_forms.each do |e| %>
+          <tr>
+            <td><%= e.event.name %></td>
+            <td><%= e.event.event_date.present? ? e.event.event_date.strftime("%B %d, %Y") : "Permanent" %></td>
+            <td><%= e.expiry_date.present? ? e.expiry_date.strftime("%B %d, %Y") : "Never" %></td>
+            <td><%= link_to "View", patient_details_admin_event_path(e.event.id, :patient_id => @patient.id) %> | <%= e.is_revoked ? "Revoked" : (link_to "Revoke", revoke_form_admin_event_path(e.event.id, :patient_id => @patient.id), :confirm => "Are you sure you want to revoke this release?") %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

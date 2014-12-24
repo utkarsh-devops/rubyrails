@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  event_date: 2013-09-05
+  event_time: 2013-09-05 18:23:58
+  is_permanent_event: false
+
+two:
+  name: MyString
+  event_date: 2013-09-05
+  event_time: 2013-09-05 18:23:58
+  is_permanent_event: false

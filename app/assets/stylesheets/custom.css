@@ -1,0 +1,164 @@
+#header {
+  background: #074491;
+}
+#header ul.tabs > li.current > a, #header ul.tabs > li:hover > a {
+  background: #4e6cb4;
+}
+.releaseUpperLinks{
+  padding-bottom:20px;
+  overflow:hidden;
+}
+.topBreadcrumb{
+  float:left;
+}
+.exportLinks{
+  float:right;
+  margin-right:100px;
+}
+.releaseLeftSection{
+  width:30%;
+  float:left;
+}
+.imageWrapper{
+  width: 300px;
+  height: 200px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid;
+}
+.releaseImage{
+  max-width: 300px;
+  max-height: 200px;
+}
+.releaseRightSection{
+  width:65%;
+  float:right;
+}
+.eventDetails{
+  width:30%;
+  float:left;
+}
+.usesSection{
+  width:30%;
+  float:left;
+}
+.formSection{
+  float:left;
+  padding-top:20px;
+}
+.searchForm {
+  margin-top: 10px;
+}
+.searchForm [type=text] {
+  padding: 4px 6px;
+  width: 126px;
+  font-size:12px;
+}
+.centerWrapper {
+  margin: 12% auto 2%;
+  width: 70%;
+}
+.centerWrapper img {
+  margin: 0 auto 6%;
+  display: block;
+}
+.centerContainer {
+  margin: 0 auto;
+  width: 50%;
+}
+.chkBox {
+  margin-bottom: 14px;
+}
+.chkBox label {
+  display: inline-block;
+}
+.chkBox input[type="radio"], .chkBox input[type="checkbox"] {
+  margin-top: 0;
+}
+.alert {
+  margin-top: 2%;
+}
+#myModal form{
+  margin: 0 !important;
+}
+.modal.fade.in{
+  top:35% !important;
+  width:25% !important;
+  left: 65% !important;
+}
+.modal.fade{
+  top:35% !important;
+  width:25% !important;
+  left: 65% !important;
+}
+.modal-footer{
+  text-align: center !important;
+}
+.table_tools{
+  display: none;
+}
+
+/* Devise error messages */
+#error_explanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+  margin: 0px 0px 0px 19px;
+  padding-top: 4px;
+}
+
+#eventNote{
+  color: #1824BB;
+  width: 80%;
+  padding-left: 20%;
+  padding-right: 10px;
+  text-transform: none !important;
+  font-weight: normal;
+  margin-left: 19px
+}
+
+/* DatePicker reduce title*/
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+  font-size: 0.9em;
+}
+
+/*Active admin custom form*/
+.customForm label{
+  padding: 12px 4px;
+}
+.customForm input[type="email"],.customForm input[type="text"]{
+  width: 44%;
+  margin-left: 10px;
+}
+.customForm label[for="event_is_permanent_event"] {
+margin-left: 16px;
+}
+/*Active admin Default cursor on top email*/
+#current_user a {
+  cursor: default;
+}

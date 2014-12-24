@@ -1,0 +1,30 @@
+<div class="releaseForm">
+  <ul id="myTab" class="nav nav-tabs">
+    <li class="active"><a href="#english" data-toggle="tab">English</a></li>
+    <li><a href="#spanish" data-toggle="tab">Spanish</a></li>
+  </ul>
+  <%= semantic_form_for :release, :url => '/admin/releases/update_release' do |form| %>
+    <%= form.inputs do %>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="english">
+          <%= form.input :english_desc, :as => :text, :input_html => {:class=>'tinymce', :rows => 30, :cols => 120} %>
+        </div>
+        <div class="tab-pane fade" id="spanish">
+          <%= form.input :spanish_desc, :as => :text, :input_html => {:class=>'tinymce', :rows => 30, :cols => 120} %>
+        </div>
+      </div>
+    <% end %>
+    <%= form.actions  do %>
+      <%= form.action :submit, :label => "Save" %>
+      <li class="cancel">
+        <a href="/admin/releases">Cancel</a>
+      </li>
+    <% end %>
+  <% end %>
+</div>
+<script type="text/javascript">
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+});
+</script>

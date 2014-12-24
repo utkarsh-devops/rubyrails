@@ -1,0 +1,6 @@
+<input id="id" type="hidden" value="<%= @release.id %>" name="id">
+<% if params[:language] == "spanish" %>
+  <div style="overflow:hidden;width:100%"> <%= @release.spanish_desc.html_safe %> </div>
+<% else %>
+  <div style="overflow:hidden;width:100%"> <%= @release.english_desc.html_safe %> </div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="centerWrapper">
+  <%= image_tag("choc_logo.png") %>
+  <div class="centerContainer">
+    <h4>Set Password for <%= resource.email %></h4>
+
+    <%= form_for(resource, as: resource_name, url: confirm_path) do |f| %>
+      <%= devise_error_messages! %>
+
+      <%= f.hidden_field :confirmation_token %>
+
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
+
+      <div><%= f.submit "Confirm Account" %></div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+</div>

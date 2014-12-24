@@ -1,0 +1,73 @@
+<div class ="releaseUpperLinks">
+  <div class="topBreadcrumb">
+    <a href="#">Search results</a> / <%= link_to "Releases By events", patient_events_admin_events_path(:patient_id => @patient.id) %> / <span>Release</span>
+  </div>
+  <div class="exportLinks">
+    &nbsp;<%= @is_revoked ? "Revoked" : (link_to "Revoke", revoke_form_admin_event_path(@event.id, :patient_id => @patient.id), :confirm => "Are you sure you want to revoke this release?") %>&nbsp; | &nbsp;<a class="printRelease" href="#">Print</a>&nbsp; | &nbsp;<%= link_to "Export", download_admin_events_path(:patient_form_id => @patient_form.id) %>&nbsp; | &nbsp;<a data-toggle="modal" href="#myModal">Email</a>&nbsp;
+  </div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <%= form_tag('/admin/events/send_mail', method: "get") do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Please Enter Email Address</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id" value="<%= @patient_form.id %>">
+          <input type="email" placeholder="Email" id="email" name="email" required="true">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contentWrapper">
+  <div class="releaseLeftSection">
+    <div class="imageWrapper">
+      <%= cl_image_tag @patient_form.profile_image, :class => "releaseImage" %>
+    </div>
+    <br><%= @patient.display_name %>
+    <br><%= @patient.email %>
+    <br>Date of Birth: <%= @patient.birth_date.strftime("%B %d, %Y") %><br><br>
+    <div class="imageWrapper">
+      <%= cl_image_tag @patient_form.sign_image, :class => "releaseImage" %>
+    </div>
+  </div>
+  <div class="releaseRightSection">
+    <div class="eventDetails">
+      <b><%= @event.name %> Event</b><br>
+      <%= @event.is_permanent_event ? 'Permanent Event' : @event.event_date.strftime("%B %d, %Y") %><br>
+      Release Expiry: <%= @patient_form.expiry_date.present? ? @patient_form.expiry_date.strftime("%B %d, %Y") : 'Never' %><br>
+      Signed by: <%= @patient.birth_date < (Date.today - 18.years) ? @patient.display_name : @patient_form.display_guardian_name %><br>
+      Phone: <%= @patient.phone_no.present? ? number_to_phone_formater(@patient.phone_no) : "" %><br>
+      Follow Up: <%= @patient_form.follow_up_requested ? 'Requested' : 'Not Requested' %><br>
+      Notes: <%= @patient_form.notes.present? ? @patient_form.notes : "" %><br>
+    </div>
+    <div class="usesSection">
+      <b> Approved Uses </b><br />
+      <% @uses.each do |u| %>
+          <%= u %><br />
+      <% end %>
+    </div>
+    <div class="formSection">
+      <%= @release.english_desc.html_safe %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".printRelease").click(function() {
+        divToPrint = $(".contentWrapper").clone();
+        $("a",divToPrint).remove();
+        popupWin = window.open("", "_blank", "width=750,height=800");
+        popupWin.document.open();
+        head = $("head");
+        popupWin.document.write("<html><head><link rel='stylesheet' href='/assets/print.css' type='text/css' media='print' /></head><body style='width:auto;float:left;' onload=\"window.print()\"><div class='printPg'>" + divToPrint.html() + "</div></body></html>");
+        popupWin.document.close();
+        });
+    });
+</script>

@@ -1,0 +1,64 @@
+.releaseUpperLinks{
+  padding-bottom:20px;
+  overflow:hidden;
+}
+.topBreadcrumb{
+  float:left;
+}
+.exportLinks{
+  float:right;
+  margin-right:100px;
+}
+.releaseLeftSection {
+  margin-bottom: 20px;
+}
+.imageWrapper{
+  width: 300px;
+  height: 200px;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid;
+  float: left;
+}
+.releaseImage{
+  max-width: 300px;
+  max-height: 200px;
+}
+.eventDetails{
+  width:45%;
+  float:left;
+}
+.usesSection{
+  width:40%;
+  float:left;
+}
+.formSection{
+  float:left;
+  padding-top:20px;
+}
+
+.patientDetails {
+  width: 300px;
+  float: left;
+  margin-left: 50px;
+}
+.cls {
+  clear: both;
+}
+.signatureImage {
+  float: right;
+  padding: 30px 0;
+}
+.signatureImage span{
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signatureImage .imageWrapper .releaseImage{
+  width: 300px;
+  height: 200px;
+  display: table-cell;
+  vertical-align: middle;
+}
